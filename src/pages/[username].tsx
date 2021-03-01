@@ -42,7 +42,7 @@ export default function Home(props: HomeProps) {
     >
       <div className={styles.container}>
         <Head>
-          <title>{user.name} | MoveIt</title>
+          <title>{user.name} | MoveIt </title>
         </Head>
 
         <Sidebar />
