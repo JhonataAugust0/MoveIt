@@ -1,0 +1,23 @@
+.completedChalengesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 2.5rem 0 3rem;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #d7d8da;
+
+  font-weight: 500;
+}
+
+.completedChalengesContainer svg {
+  margin-right: 1rem;
+}
+
+.completedChalengesContainer span:first-child {
+  font-size: 1.1rem;
+}
+
+.completedChalengesContainer span:last-child {
+  font-size: 1.3rem;
+}

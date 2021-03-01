@@ -1,58 +1,62 @@
-/** Imports
- *  Importação dos componentes da aplicação e da Head
- * provinda do NextJs, e importação da estilização.
- */
-import Head from "next/head";
+import React, { useCallback, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import { FiGithub, FiLogIn } from 'react-icons/fi';
 
-import { ChallengeBox } from "../components/ChallengeBox";
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { Countdown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
-import { CountdownProvider } from "../contexts/CountdownContext";
-import { GetServerSideProps } from "next";
+import styles from '../styles/pages/Login.module.css';
+import Head from 'next/head';
 
-import styles from "../styles/pages/Home.module.css";
-import { ChallengesProvider } from "../contexts/ChallengesContext";
+export default function Profile() {
+  const inputRef = useRef<HTMLInputElement>(null);
 
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
+  const [isFocused, setIsFocused] = useState(false);
 
-/** Export default funcion Home()
- *  A função Home retorna a hierarquização dos compo-
- * nentes utilizados na aplicação, de forma que forma
- * toda a estrutura visual e funcional da aplicação.
- */
-export default function Home(props: HomeProps) {
+  const handleFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
+  const { push } = useRouter();
+  const [username, setUsername] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (username) {
+      push(`/${username}`);
+    }
+  }
+
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={styles.container}>
-        <Head>
-          <title>Início | Move.it</title>
-        </Head>
+    <div className={styles.container}>
+      <Head>
+        <title>Home | TimeUp</title>
+      </Head>
+      <div className={styles.content}>
+        <img src="icons/Simbolo.svg" alt="Simbolo" />
+        <img src="icons/Logo.svg" alt="Logo" />
+        <strong>Bem-vindo</strong>
 
-        <ExperienceBar />
+        <div className={styles.title}>
+          <FiGithub size={36} />
+          <span>Faça login com seu GitHub para iniciar.</span>
+        </div>
 
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Digite seu username"
+            onChange={(e) => setUsername(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={inputRef}
+          />
+          <button type="submit">
+            <FiLogIn size={24} />
+          </button>
+        </form>
       </div>
-    </ChallengesProvider>
+    </div>
   );
 }

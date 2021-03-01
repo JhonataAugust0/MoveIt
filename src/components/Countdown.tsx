@@ -1,41 +1,28 @@
-/** Imports
- *  Importação do useContext, função do react que per- 
- * mite que a aplicação utilize o conceito de contextos.
- * Importação do context de CountDown e a estilização 
- * do componente,
- */
-import { useContext } from "react";
-import { CountdownContext } from "../contexts/CountdownContext";
-import styles from "../styles/components/Countdown.module.css";
+import { useContext } from 'react';
+import { CountdownContext } from '../contexts/CountdownContext';
+import styles from '../styles/components/Countdown.module.css';
 
-/** export function Countdown
- *  Countdown é a função responsável por fazer a crono
- * metragem dos ciclos pomodoro da aplicação. Ela uti-
- * liza do context de CountDown, usando seus parâmetros
- * para fazer a contagem, inicialização e finalização 
- * de um ciclo e sua reinicialização, além de verificar 
- * se há um ciclo ativo. 
- */
+import { FiPlayCircle, FiXCircle } from 'react-icons/fi';
+
 export function Countdown() {
+  const {
+    minutes,
+    seconds,
+    hasFinished,
+    isActive,
+    startCountdown,
+    resetCountdown,
+  } = useContext(CountdownContext);
 
-  const { 
-    minutes, 
-    seconds, 
-    hasFinished, 
-    isActive, 
-    startCountdown, 
-    resetCountdown 
-  } = useContext (CountdownContext)
-
-  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
-  const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
+  const [minutLeft, minutRight] = String(minutes).padStart(2, '0').split('');
+  const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
 
   return (
     <div>
-      <div className={styles.countdownContainer}>
+      <div className={styles.CountdownContainer}>
         <div>
-          <span>{minuteLeft}</span>
-          <span>{minuteRight}</span>
+          <span>{minutLeft}</span>
+          <span>{minutRight}</span>
         </div>
         <span>:</span>
         <div>
@@ -46,7 +33,7 @@ export function Countdown() {
 
       {hasFinished ? (
         <button disabled className={styles.countdownButton}>
-          Ciclo encerrado
+          Finalizado!
         </button>
       ) : (
         <>
@@ -56,7 +43,8 @@ export function Countdown() {
               className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
               onClick={resetCountdown}
             >
-              Abandonar ciclo
+              Abandonar
+              <FiXCircle size={22} />
             </button>
           ) : (
             <button
@@ -64,7 +52,8 @@ export function Countdown() {
               className={styles.countdownButton}
               onClick={startCountdown}
             >
-              Iniciar um novo ciclo
+              Começar a contagem
+              <FiPlayCircle size={22} />
             </button>
           )}
         </>

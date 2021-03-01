@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { ChallengesContext } from "../contexts/ChallengesContext";
+import { ChallengeContext } from "../contexts/ChallengeContext";
 
 import Confetti from "react-confetti";
 import useWindowDimensions from "../contexts/WindowDimensions";
 import styles from "../styles/components/LevelUpModal.module.css";
 
 export function LevelUpModal() {
-  const { level, closeLevelUpModal } = useContext(ChallengesContext);
+  const { level, closeLevelUpModal } = useContext(ChallengeContext);
   const { width, height } = useWindowDimensions();
 
   return (

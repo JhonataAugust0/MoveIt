@@ -1,52 +1,35 @@
-/** Imports
- *  Importação do useContext, função do react que per- 
- * mite que a aplicação utilize o conceito de contextos.
- * Importação dos contexts de Challenges e de Countdown
- * e suas estilizações. 
- */
-import { useContext } from "react";
-import { ChallengesContext } from "../contexts/ChallengesContext";
-import { CountdownContext } from "../contexts/CountdownContext";
+import { useContext } from 'react';
+import { FiThumbsDown, FiThumbsUp } from 'react-icons/fi';
+import { ChallengeContext } from '../contexts/ChallengeContext';
+import { CountdownContext } from '../contexts/CountdownContext';
+import styles from '../styles/components/ChallengeBox.module.css';
 
-import styles from "../styles/components/ChallengeBox.module.css";
-
-/** export function ChallengeBox
- *  É a função que tem a responsabilidade de lançar os
- * desafios para os usuários da aplicação assim que um
- * cilco é encerrado. 
- * Ela também tem a função de demonstrar os botões de 
- * falha e êxito para o usuário, controlando, a partir
- * da entrada do usuário, se ele recebe ou não o XP da-
- * quele desafio.
- */
 export function ChallengeBox() {
-  const { activeChallenge, resetChallenge, completedChallenge } = useContext(
-    ChallengesContext
+  const { activeChallenge, resetChallenge, completeChallenge } = useContext(
+    ChallengeContext,
   );
-  const { resetCountdown } = useContext(CountdownContext)
+  const { resetCountdown } = useContext(CountdownContext);
 
-    function handleChallengeSucceeded() {
-      completedChallenge()
-      resetCountdown()
-    }
+  function handleChallengeSucceeded() {
+    completeChallenge();
+    resetCountdown();
+  }
 
-    function handleChallengeFailed() {
-      resetChallenge()      
-      resetCountdown()
-    }
+  function handleChallengeFailed() {
+    resetChallenge();
+    resetCountdown();
+  }
 
   return (
     <div className={styles.challengeBoxContainer}>
       {activeChallenge ? (
         <div className={styles.challengeActive}>
           <header>Ganhe {activeChallenge.amount} xp</header>
-
           <main>
-            <img src={`icons/${activeChallenge.type}.svg`} />
+            <img src="icons/levelup.svg" alt="" />
             <strong>Novo desafio</strong>
             <p>{activeChallenge.description}</p>
           </main>
-
           <footer>
             <button
               type="button"
@@ -54,6 +37,7 @@ export function ChallengeBox() {
               onClick={handleChallengeFailed}
             >
               Falhei
+              <FiThumbsDown />
             </button>
             <button
               type="button"
@@ -61,16 +45,15 @@ export function ChallengeBox() {
               onClick={handleChallengeSucceeded}
             >
               Completei
+              <FiThumbsUp />
             </button>
           </footer>
         </div>
       ) : (
         <div className={styles.challengeNotActive}>
-          <strong>Finalize um ciclo para receber um desafio</strong>
-          <p>
-            <img src="icons/level-up.svg" alt="Level Up" />
-            Avance de level completando desafios!
-          </p>
+          <strong>Complete um ciclo para receber um desafio</strong>
+          <img src="icons/level-up.svg" alt="Level Up" />
+          <p>Suba de nível completando desafios!</p>
         </div>
       )}
     </div>

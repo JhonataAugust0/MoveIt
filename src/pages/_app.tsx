@@ -3,7 +3,7 @@
  *  de ChallengesContext, visto que é o componente que
  *  engloba toda a aplicação.  
  */
-import "../styles/global.css";
+import '../styles/global.css';
 
 /** Function MyApp
  *  A MyApp recebe os parâmetros Component e pageProps,
@@ -11,9 +11,7 @@ import "../styles/global.css";
  * mando a aplicação através dos componentes.  
  */
 function MyApp({ Component, pageProps }) {
-  return (
-    <Component {...pageProps} />
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
