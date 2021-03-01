@@ -60,7 +60,7 @@ Concluindo-a ou não, ele deve parar e descansar 5 minutos.
 </div>
 
 ## Como posso conhecer mais desse projeto?
-#### Você pode visualizar no seu próprio navegador clicando [aqui](https://move-it-rho-five.vercel.app/)
+#### Você pode visualizar no seu próprio navegador clicando [aqui](https://jhmoveit.vercel.app/)
 
 #### Ou você pode baixar e rodar o repositório na sua máquina, podendo também, aplicar mudanças e incrementações, elas são sempre bem-vindas!
 ### Para isso, siga o tutorial abaixo:
