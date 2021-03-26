@@ -42,6 +42,7 @@
   font-size: 2rem;
   font-weight: 500;
 }
+
 @media (max-width: 768px) {
   .content {
     width: 100%;
@@ -72,32 +73,30 @@
   display: flex;
   justify-content: space-between;
 
-  background: #FFFFFF, 100%;
+  
   border-radius: 5px;
   border: 1px solid;
 }
 
-.container input {
+.content input {
   order: 1;
 
   width: 100%;
   padding: 10px;
   margin-right: 5px;
 
-  font-size: 14px;
-  font-family: 'Rajdhani', sans-serif;
-
   background: linear-gradient(90deg, #4953B8 0%, rgba(73, 83, 184, 0.2) 100%);
   border-radius: 5px 0px 0px 5px;  
   border: none;
 }
-.container input:placeholder {
-  font: #fff;
+
+.content input:placeholder {
+  font-size: 14px;
   font-family: 'Rajdhani', sans-serif;
+  font: #FFF;
 }
 
-.container button {
-  
+.content button {
   order: 2;
 
   width: 80px;
@@ -114,12 +113,12 @@
   transition: 0.2s;
 }
 
-.container button:hover {
+.content button:hover {
   background: #4CD62B;
   border-radius: 0px 5px 5px 0px;
 }
 
-.container button svg {
+.content button svg {
   color: var(--white);
 }
 

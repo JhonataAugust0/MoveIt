@@ -2,18 +2,18 @@
  *  Importação dos componentes da aplicação e da Head
  * provinda do NextJs, e importação da estilização.
  */
-import Head from 'next/head';
-import styles from '../styles/pages/Home.module.css';
-
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import { ChallengeBox } from '../components/ChallengeBox';
 import { CompletedChalenges } from '../components/CompletedChalenges';
 import { Countdown } from '../components/Countdown';
+import DarkModeCheck from '../components/DarkModeCheck';
 import { ExperienceBar } from '../components/ExperienceBar';
 import { Profile } from '../components/Profile';
-import { ChallengeBox } from '../components/ChallengeBox';
-import { CountdownProvider } from '../contexts/CountdownContext';
-import { ChallengeProvider } from '../contexts/ChallengeContext';
 import { Sidebar } from '../components/Sidebar';
+import { ChallengeProvider } from '../contexts/ChallengeContext';
+import { CountdownProvider } from '../contexts/CountdownContext';
+import styles from '../styles/pages/Home.module.css';
 
 interface userGithub {
   name: string;
@@ -40,13 +40,13 @@ export default function Home(props: HomeProps) {
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
     >
-      <div className={styles.container}>
+     <div className={styles.container}>
         <Head>
           <title>{user.name} | MoveIt </title>
         </Head>
 
-        <Sidebar />
-
+        <Sidebar /> 
+        <DarkModeCheck />
         <div className={styles.content}>
           <ExperienceBar />
 

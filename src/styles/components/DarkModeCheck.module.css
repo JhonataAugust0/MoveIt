@@ -1,0 +1,53 @@
+.container {
+  margin: 1.05rem;
+  align-self: flex-end;
+}
+
+.checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.labelCheckbox {
+  display: flex;
+  align-items: initial;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 100px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.labelCheckbox .buttonCheckBox {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  transition: 0.2s;
+  background: rgb(214, 214, 9);
+  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+}
+
+.checkbox:checked + .labelCheckbox .buttonCheckBox {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+  background: rgba(74, 7, 199, 10);
+}
+
+.checkbox:checked + .labelCheckbox {
+  background: rgba(43, 43, 119);
+}
+
+.buttonCheckBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}

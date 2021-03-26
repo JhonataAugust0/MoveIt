@@ -31,7 +31,7 @@ export default function Profile() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Home | TimeUp</title>
+        <title>Home | MoveIt</title>
       </Head>
       <div className={styles.content}>
         <img src="icons/Simbolo.svg" alt="Simbolo" />
